@@ -107,9 +107,10 @@ Each run emits **28 files** per release:
 
 ## Releases
 
-`.github/workflows/release.yml` runs on every published GitHub Release and
-uploads all 28 files as release assets. Filenames carry the release tag, e.g.
-`cameo-convert-v1.2.3-cards-clean.json`.
+`.github/workflows/release.yml` fires when a draft GitHub Release is
+created and uploads all 28 files as assets to the draft. The maintainer
+publishes the draft after the workflow finishes. Filenames carry the
+release tag, e.g. `cameo-convert-v1.2.3-cards-clean.json`.
 
 ---
 
@@ -138,21 +139,28 @@ uploads all 28 files as release assets. Filenames carry the release tag, e.g.
 1. Bump `version` in `pyproject.toml` and the matching `__version__` in
    `src/cameo_convert/__init__.py`.
 2. `git tag vX.Y.Z && git push --tags`.
-3. On GitHub, **Releases → Draft a new release**, pick the tag, write release
-   notes, click **Publish release** (not "Save as pre-release" — the workflow
-   only fires on the `released` event, which excludes pre-releases by design;
-   see §7.1 of the design doc).
-4. The `release.yml` workflow generates the 28 files and uploads them as
-   assets. Confirm the assets list on the release page.
+3. On GitHub, **Releases → Draft a new release**, pick the tag, write the
+   release notes, click **Save draft** (NOT Publish).
+4. The `release.yml` workflow fires on draft creation, builds all 28 files,
+   and uploads them as assets. Watch the Actions tab; confirm the workflow
+   passes and the asset list on the draft page shows 28 files.
+5. Back on the draft release page, choose "Set as the latest release" or
+   "Set as a pre-release", then click **Publish release**.
+
+Do not publish before the workflow finishes — once published, GitHub marks
+the release immutable and subsequent asset uploads will fail.
 
 ### Re-run a release that failed
+
+If the workflow failed against a draft release that still exists:
 
 ```sh
 gh workflow run release.yml -f release_tag=vX.Y.Z
 ```
 
-This uses the `workflow_dispatch` input added per §7.2 of the design doc; it
-re-attaches assets to the existing tag without creating a new release.
+If the draft was already published (and is now immutable), delete the
+release on GitHub, re-create it as a draft for the same tag, and the
+workflow will re-fire automatically.
 
 ### Handle a new Pokémon generation (Gen 10, Gen 11, ...)
 
