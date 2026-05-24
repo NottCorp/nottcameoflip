@@ -6,7 +6,7 @@ INPUT ?= data/cameo-database.ods
 OUTPUT_DIR ?= dist
 RELEASE_TAG ?=
 SITE_DIR ?= _site
-SITE_PORT ?= 8000
+SITE_PORT ?= 9449
 
 .DEFAULT_GOAL := help
 

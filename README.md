@@ -113,10 +113,10 @@ picker), a release-history archive, and the database itself in a filterable
 table — no download required.
 
 The site rebuilds on `release: [published]` via
-`.github/workflows/pages.yml` (also runs on manual dispatch and on pushes
-to `develop` that touch `web/**`). Source lives in `web/`; the
+`.github/workflows/pages.yml` (also runnable via manual dispatch).
+Source lives in `web/`; the
 generator (`scripts/build_site.py`) fetches the GitHub Releases API and
-the clean-variant JSON asset from the latest release, then writes a
+the full-variant JSON asset from the latest release, then writes a
 self-contained `_site/`.
 
 Build it locally:

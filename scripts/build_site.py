@@ -1,7 +1,7 @@
 """Generate the GitHub Pages site under _site/.
 
 Fetches releases via the GitHub REST API, downloads the latest published
-release's clean-variant JSON asset for inline browsing, copies web/* into
+release's full-variant JSON asset for inline browsing, copies web/* into
 the output directory, and writes data/{releases.json,cards.json}.
 
 Usage:
@@ -104,15 +104,15 @@ def pick_latest(releases: list[dict]) -> dict | None:
     return releases[0] if releases else None
 
 
-def find_clean_json_asset(release: dict) -> dict | None:
+def find_full_json_asset(release: dict) -> dict | None:
     tag = release.get("tag_name") or ""
-    expected = f"cameo-convert-{tag}-cards-clean.json"
+    expected = f"cameo-convert-{tag}-cards-full.json"
     for a in release.get("assets", []) or []:
         if a.get("name") == expected:
             return a
     # Tolerate variant without tag in name.
     for a in release.get("assets", []) or []:
-        if a.get("name") == "cameo-convert-cards-clean.json":
+        if a.get("name") == "cameo-convert-cards-full.json":
             return a
     return None
 
@@ -185,17 +185,17 @@ def main(argv: list[str] | None = None) -> int:
     latest = pick_latest(releases)
     cards_payload: dict | None = None
     if latest:
-        asset = find_clean_json_asset(latest)
+        asset = find_full_json_asset(latest)
         if asset and asset.get("browser_download_url"):
             print(f"  downloading {asset['name']}…", file=sys.stderr)
             try:
                 blob = download(asset["browser_download_url"], token)
                 cards_payload = json.loads(blob.decode("utf-8"))
             except (urllib.error.HTTPError, urllib.error.URLError, json.JSONDecodeError) as e:
-                print(f"warn: could not fetch clean JSON asset: {e}", file=sys.stderr)
+                print(f"warn: could not fetch full JSON asset: {e}", file=sys.stderr)
         else:
             print(
-                f"warn: no clean-variant JSON asset on {latest.get('tag_name')}",
+                f"warn: no full-variant JSON asset on {latest.get('tag_name')}",
                 file=sys.stderr,
             )
     if cards_payload is None:

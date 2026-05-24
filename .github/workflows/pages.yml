@@ -1,20 +1,13 @@
 name: Deploy GitHub Pages site
 
 # Rebuilds the site whenever a release is published so the page shows the
-# latest tag, notes, asset downloads, and inline card browser. Also runs on
-# push to develop when the site template changes (data unchanged) and on
-# manual dispatch.
+# latest tag, notes, asset downloads, and inline card browser. Manual
+# dispatch is kept for re-deploys (e.g. after template tweaks).
 
 on:
   release:
     types: [published]
   workflow_dispatch:
-  push:
-    branches: [develop]
-    paths:
-      - 'web/**'
-      - 'scripts/build_site.py'
-      - '.github/workflows/pages.yml'
 
 permissions:
   contents: read
