@@ -1,0 +1,33 @@
+name: CI
+
+# Per design doc §8: run tests + a smoke conversion on every PR to catch
+# reader regressions before they reach a release.
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -e ".[dev]"
+
+      - name: Unit tests
+        run: pytest -q
+
+      - name: Smoke convert (clean variant only)
+        run: |
+          python -m cameo_convert \
+            --input data/cameo-database.ods \
+            --output-dir /tmp/dist \
+            --variants clean \
+            --formats json,csv,sqlite \
+            --bundle ''
+          ls -la /tmp/dist

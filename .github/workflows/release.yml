@@ -1,0 +1,53 @@
+name: Build cameo-convert release assets
+
+# Per design doc §7.1: fire on `release: [released]` (not `published`) so that
+# pre-releases — which don't take the "Latest" sidebar slot — never generate
+# assets that misrepresent themselves as the current snapshot.
+on:
+  release:
+    types: [released]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Existing release tag to attach assets to'
+        required: true
+
+jobs:
+  build-and-attach:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -e .
+
+      - name: Resolve release tag
+        id: tag
+        run: |
+          if [ -n "${{ github.event.release.tag_name }}" ]; then
+            echo "value=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "value=${{ inputs.release_tag }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Convert
+        run: |
+          python -m cameo_convert \
+            --input data/cameo-database.ods \
+            --output-dir dist/ \
+            --release-tag "${{ steps.tag.outputs.value }}" \
+            --bundle zip,tar.gz
+
+      - name: List generated files
+        run: ls -la dist/
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.value }}
+          files: dist/*
