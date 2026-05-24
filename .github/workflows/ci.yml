@@ -1,0 +1,103 @@
+name: CI
+
+# Per design doc §8: run tests + a smoke conversion on every PR to catch
+# reader regressions before they reach a release.
+#
+# Each step is intentionally separate so the GitHub UI surfaces *which* phase
+# failed — install, parse, transform, individual writer, golden diff, etc.
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  test:
+    name: Test + smoke convert
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Show Python + pip versions
+        run: |
+          python --version
+          pip --version
+
+      - name: Install package (editable, with dev deps)
+        run: pip install -e ".[dev]"
+
+      - name: Verify import smoke
+        run: python -c "from cameo_convert import __version__; print('cameo-convert', __version__)"
+
+      - name: Unit tests — normalize
+        run: pytest tests/test_normalize.py -q
+
+      - name: Unit tests — reader
+        run: pytest tests/test_reader.py -q
+
+      - name: Unit tests — transform + filter
+        run: pytest tests/test_transform.py -q
+
+      - name: Unit tests — writers (all formats)
+        run: pytest tests/test_writers.py -q
+
+      - name: Unit tests — set release dates
+        run: pytest tests/test_sets.py -q
+
+      - name: Golden diff vs checked-in tests/goldens/*.json
+        run: pytest tests/test_goldens.py -q
+
+      - name: Source-data parse smoke
+        run: |
+          python -c "from cameo_convert.reader import read; \
+            e, m = read('data/cameo-database.ods'); \
+            print(f'parsed {len(e)} entries; up-to-date with {m.up_to_date_with_set}')"
+
+      - name: Smoke convert — clean variant, JSON
+        run: |
+          mkdir -p /tmp/dist
+          python -m cameo_convert \
+            --input data/cameo-database.ods \
+            --output-dir /tmp/dist \
+            --variants clean \
+            --formats json \
+            --bundle '' \
+            --log-level INFO
+
+      - name: Smoke convert — clean variant, CSV
+        run: |
+          python -m cameo_convert \
+            --input data/cameo-database.ods \
+            --output-dir /tmp/dist \
+            --variants clean \
+            --formats csv \
+            --bundle '' \
+            --log-level INFO
+
+      - name: Smoke convert — clean variant, SQLite
+        run: |
+          python -m cameo_convert \
+            --input data/cameo-database.ods \
+            --output-dir /tmp/dist \
+            --variants clean \
+            --formats sqlite \
+            --bundle '' \
+            --log-level INFO
+
+      - name: Spot-check §6.4 worked example (Bulbasaur on Town Volunteers)
+        run: |
+          python -c "import json, sys; \
+            d = json.load(open('/tmp/dist/cameo-convert-cards-clean.json')); \
+            c = d['cards'].get('Aquapolis|Town Volunteers|136'); \
+            assert c and any(x['subject']=='Bulbasaur' for x in c['cameos']), \
+              'spot-check failed: Bulbasaur missing on Aquapolis|Town Volunteers|136'; \
+            print('spot-check OK — Bulbasaur on Aquapolis|Town Volunteers|136')"
+
+      - name: List smoke output
+        run: ls -la /tmp/dist

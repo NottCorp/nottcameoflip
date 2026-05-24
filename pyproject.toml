@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cameo-convert"
+version = "0.1.0"
+description = "Invert RotomAmiti's Cameo Pokémon Card Database from Pokémon-indexed to card-indexed."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "Deepesh Nimma", email = "deepnimma@gmail.com" }]
+keywords = ["pokemon", "tcg", "cameo", "database", "converter"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "odfpy>=1.4.1",
+    "openpyxl>=3.1.0",
+    "PyYAML>=6.0",
+    "tomli-w>=1.0.0",
+    "Jinja2>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.scripts]
+cameo-convert = "cameo_convert.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/NottCorp/nottcameoflip"
+"Design Doc" = "https://github.com/NottCorp/nottcameoflip/blob/main/docs/design.pdf"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cameo_convert"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/cameo_convert",
+    "data/cameo-database.ods",
+    "docs/design.pdf",
+    "README.md",
+    "LICENSE",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

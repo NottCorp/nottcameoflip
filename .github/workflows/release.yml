@@ -1,0 +1,86 @@
+name: Build cameo-convert release assets
+
+# Per design doc §7.1: fire on `release: [released]` (not `published`) so that
+# pre-releases — which don't take the "Latest" sidebar slot — never generate
+# assets that misrepresent themselves as the current snapshot.
+#
+# Steps are intentionally granular so any failure surfaces clearly in the
+# Actions UI: install, parse, convert, validate file count, upload.
+on:
+  release:
+    types: [released]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Existing release tag to attach assets to'
+        required: true
+
+jobs:
+  build-and-attach:
+    name: Build + upload release assets
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Verify import smoke
+        run: python -c "from cameo_convert import __version__; print('cameo-convert', __version__)"
+
+      - name: Resolve release tag
+        id: tag
+        run: |
+          if [ -n "${{ github.event.release.tag_name }}" ]; then
+            echo "value=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "value=${{ inputs.release_tag }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Show resolved tag
+        run: echo "release_tag=${{ steps.tag.outputs.value }}"
+
+      - name: Convert (all 13 formats × 2 variants + bundles)
+        run: |
+          python -m cameo_convert \
+            --input data/cameo-database.ods \
+            --output-dir dist/ \
+            --release-tag "${{ steps.tag.outputs.value }}" \
+            --bundle zip,tar.gz \
+            --log-level INFO
+
+      - name: List generated files
+        run: ls -la dist/
+
+      - name: Verify 28 files generated (13 × 2 + 2 archives)
+        run: |
+          count=$(ls dist/ | wc -l | tr -d ' ')
+          echo "files in dist/: $count"
+          if [ "$count" -ne 28 ]; then
+            echo "FAIL: expected 28 files, got $count"
+            exit 1
+          fi
+
+      - name: Spot-check §6.4 example in JSON
+        run: |
+          python -c "import json, glob, sys; \
+            f = glob.glob('dist/cameo-convert-*-cards-clean.json')[0]; \
+            d = json.load(open(f)); \
+            c = d['cards'].get('Aquapolis|Town Volunteers|136'); \
+            assert c and any(x['subject']=='Bulbasaur' for x in c['cameos']), 'spot-check failed'; \
+            print('spot-check OK — Bulbasaur on Aquapolis|Town Volunteers|136')"
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.value }}
+          files: dist/*
