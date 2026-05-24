@@ -1,0 +1,65 @@
+name: Deploy GitHub Pages site
+
+# Rebuilds the site whenever a release is published so the page shows the
+# latest tag, notes, asset downloads, and inline card browser. Also runs on
+# push to develop when the site template changes (data unchanged) and on
+# manual dispatch.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+  push:
+    branches: [develop]
+    paths:
+      - 'web/**'
+      - 'scripts/build_site.py'
+      - '.github/workflows/pages.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/build_site.py --out _site
+
+      - name: List generated site
+        run: ls -la _site _site/data
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy to Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

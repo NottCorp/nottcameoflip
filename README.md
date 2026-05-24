@@ -105,6 +105,34 @@ Each run emits **28 files** per release:
   rows with blank card names.
 - **Full** — every entry from the source with all flags preserved as metadata.
 
+## Website
+
+A GitHub Pages site at **https://nottcorp.github.io/nottcameoflip/** displays
+the latest release: tag, date, notes, asset downloads (format × variant
+picker), a release-history archive, and the database itself in a filterable
+table — no download required.
+
+The site rebuilds on `release: [published]` via
+`.github/workflows/pages.yml` (also runs on manual dispatch and on pushes
+to `develop` that touch `web/**`). Source lives in `web/`; the
+generator (`scripts/build_site.py`) fetches the GitHub Releases API and
+the clean-variant JSON asset from the latest release, then writes a
+self-contained `_site/`.
+
+Build it locally:
+
+```sh
+make site         # writes _site/
+make site-serve   # builds then serves on http://localhost:8000
+```
+
+`make site` reads `GITHUB_TOKEN` (or falls back to `gh auth token`) and
+defaults to the `NottCorp/nottcameoflip` repo; override with
+`GITHUB_REPOSITORY=owner/repo make site`.
+
+One-time setup: in repo Settings → Pages, set **Source** to "GitHub
+Actions".
+
 ## Releases
 
 `.github/workflows/release.yml` fires on `push: tags: 'v*'`. It creates
