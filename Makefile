@@ -5,6 +5,8 @@ VENV_PIP := $(VENV)/bin/pip
 INPUT ?= data/cameo-database.ods
 OUTPUT_DIR ?= dist
 RELEASE_TAG ?=
+SITE_DIR ?= _site
+SITE_PORT ?= 9449
 
 .DEFAULT_GOAL := help
 
@@ -58,11 +60,18 @@ fetch-sets: $(VENV_PYTHON) ## Refresh data/set_release_dates.json from pokemontc
 shell: $(VENV_PYTHON) ## Drop into a Python REPL with the package importable
 	$(VENV_PYTHON)
 
+site: $(VENV_PYTHON) ## Build the GitHub Pages site into $(SITE_DIR)/
+	$(VENV_PYTHON) scripts/build_site.py --out $(SITE_DIR)
+
+site-serve: site ## Build and serve the site on http://localhost:$(SITE_PORT)
+	@echo "serving $(SITE_DIR) on http://localhost:$(SITE_PORT)"
+	$(VENV_PYTHON) -m http.server -d $(SITE_DIR) $(SITE_PORT)
+
 clean: ## Remove generated outputs and Python caches
-	rm -rf $(OUTPUT_DIR) build dist src/*.egg-info *.egg-info .pytest_cache .ruff_cache
+	rm -rf $(OUTPUT_DIR) $(SITE_DIR) build dist src/*.egg-info *.egg-info .pytest_cache .ruff_cache
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +
 
 distclean: clean ## Also remove the virtualenv
 	rm -rf $(VENV)
 
-.PHONY: help install test run quick smoke verify goldens fixture fetch-sets shell clean distclean
+.PHONY: help install test run quick smoke verify goldens fixture fetch-sets shell site site-serve clean distclean

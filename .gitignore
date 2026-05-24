@@ -5,6 +5,9 @@ build/
 *.egg
 .eggs/
 
+# Generated site
+_site/
+
 # Python bytecode
 __pycache__/
 *.py[codz]
