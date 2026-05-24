@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "source": "hand-crafted test fixture",
+    "fetched_at": "2026-05-23T00:00:00Z",
+    "set_count": 5
+  },
+  "sets": {
+    "aquapolis": {
+      "release_date": "2003-01-15",
+      "display_name": "Aquapolis",
+      "series": "E-Card",
+      "ptcgo_code": "AQ",
+      "source_aliases": ["Aquapolis", "Aquapolis Reprint"]
+    },
+    "crown-zenith": {
+      "release_date": "2023-01-20",
+      "display_name": "Crown Zenith",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CRZ",
+      "source_aliases": ["Crown Zenith"]
+    },
+    "sm-black-star-promos": {
+      "release_date": "2017-02-03",
+      "display_name": "SM Black Star Promos",
+      "series": "Sun & Moon",
+      "ptcgo_code": "SMP",
+      "source_aliases": ["SM Black Star Promos", "SM Promos", "SM-P Promos"]
+    },
+    "gym-challenge": {
+      "release_date": "2000-10-16",
+      "display_name": "Gym Challenge",
+      "series": "Gym",
+      "ptcgo_code": "G2",
+      "source_aliases": ["Gym Challenge"]
+    },
+    "future-set": {
+      "release_date": "2099-12-31",
+      "display_name": "Future Set",
+      "series": "Future",
+      "ptcgo_code": "FUT",
+      "source_aliases": ["Future Set"]
+    }
+  }
+}

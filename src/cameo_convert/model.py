@@ -56,6 +56,10 @@ class Card:
     # Base Pokémon species the card is named after. Multi-named cards like
     # "Reshiram & Zekrom-GX" populate both. Generic Trainer cards: [].
     primary_pokemons: list[str] = field(default_factory=list)
+    # YYYY-MM-DD release date, resolved via cameo_convert.sets.SetDateResolver
+    # against data/set_release_dates.json. None if the source set name has no
+    # matching entry (add a manual alias to fix one-off cases).
+    release_date: str | None = None
 
     @property
     def identity(self) -> str:

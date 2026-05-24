@@ -45,6 +45,7 @@ def card_to_dict(card: Card) -> dict:
         "card_name": card.card_name,
         "set": card.set_name,
         "collector_number": card.collector_number,
+        "release_date": card.release_date,
         "artwork_group_id": card.artwork_group_id,
         "primary_pokemons": list(card.primary_pokemons),
         "cameos": [cameo_to_dict(c) for c in card.cameos],
@@ -68,6 +69,7 @@ FLAT_COLUMNS = [
     "card_name",
     "primary_pokemons",
     "set",
+    "release_date",
     "collector_number",
     "artwork_group_id",
     "subject",
@@ -136,9 +138,12 @@ def group_by_primary_pokemon(
             sorted(
                 buckets[k],
                 key=lambda c: (
+                    # Unknown release dates sort last in the chronological
+                    # ordering, then fall back to set name + # for stability.
+                    c.release_date or "9999-99-99",
+                    c.collector_number,
                     c.set_name,
                     c.card_name or "",
-                    c.collector_number,
                 ),
             ),
         )
@@ -151,6 +156,7 @@ def _flat_row(card: Card, cameo, *, subject: str, relation: str) -> dict:
         "card_name": card.card_name or "",
         "primary_pokemons": ",".join(card.primary_pokemons),
         "set": card.set_name,
+        "release_date": card.release_date or "",
         "collector_number": card.collector_number,
         "artwork_group_id": card.artwork_group_id or "",
         "subject": subject,

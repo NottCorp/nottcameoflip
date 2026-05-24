@@ -14,6 +14,7 @@ CREATE TABLE cards (
     card_name TEXT,
     set_name TEXT NOT NULL,
     collector_number TEXT NOT NULL,
+    release_date TEXT,  -- YYYY-MM-DD from data/set_release_dates.json, or NULL
     artwork_group_id TEXT,
     primary_pokemons TEXT  -- comma-joined; see card_primary_pokemons for normalized list
 );
@@ -59,12 +60,14 @@ class SqliteWriter:
                 card = dataset.cards[key]
                 con.execute(
                     "INSERT INTO cards(key, card_name, set_name, collector_number, "
-                    "artwork_group_id, primary_pokemons) VALUES (?, ?, ?, ?, ?, ?)",
+                    "release_date, artwork_group_id, primary_pokemons) "
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)",
                     (
                         key,
                         card.card_name,
                         card.set_name,
                         card.collector_number,
+                        card.release_date,
                         card.artwork_group_id,
                         ",".join(card.primary_pokemons) or None,
                     ),

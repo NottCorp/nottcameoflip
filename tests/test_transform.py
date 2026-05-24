@@ -3,9 +3,11 @@ from pathlib import Path
 from cameo_convert.filter import clean, full
 from cameo_convert.model import Flag
 from cameo_convert.reader import read
+from cameo_convert.sets import load as load_set_dates
 from cameo_convert.transform import artwork_groups, card_identity, invert
 
 FIXTURE = Path(__file__).parent / "fixtures" / "tiny_sample.ods"
+SET_DATES_FIXTURE = Path(__file__).parent / "fixtures" / "set_release_dates.json"
 
 
 def _load():
@@ -14,6 +16,7 @@ def _load():
         entries,
         source_file=str(FIXTURE),
         source_last_updated=meta.last_updated,
+        set_date_resolver=load_set_dates(SET_DATES_FIXTURE),
     )
 
 
@@ -124,6 +127,23 @@ def test_primary_pokemons_empty_for_generic_card_names():
     # "Pokémon Valley" isn't named after any species in known_species
     valley = ds.cards["Miscellaneous Promos|Pokémon Valley|-"]
     assert valley.primary_pokemons == []
+
+
+def test_release_date_populated_via_resolver():
+    ds = _load()
+    # Aquapolis IS in the fixture set_release_dates.json
+    aqua = ds.cards["Aquapolis|Town Volunteers|136"]
+    assert aqua.release_date == "2003-01-15"
+    # "Made Up Set" isn't → None
+    made_up = ds.cards["Made Up Set|Some Card|1"]
+    assert made_up.release_date is None
+
+
+def test_release_date_alias_match():
+    # "Aquapolis Reprint" is set in the fixture's source_aliases for aquapolis.
+    ds = _load()
+    reprint = ds.cards["Aquapolis Reprint|Town Volunteers|200"]
+    assert reprint.release_date == "2003-01-15"
 
 
 def test_clean_preserves_non_english_reprint_sibling():

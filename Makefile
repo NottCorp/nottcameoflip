@@ -51,6 +51,10 @@ goldens: $(VENV_PYTHON) ## Regenerate tests/goldens/*.json from the current sour
 fixture: $(VENV_PYTHON) ## Rebuild tests/fixtures/tiny_sample.ods
 	$(VENV_PYTHON) tests/fixtures/build_tiny_sample.py
 
+fetch-sets: $(VENV_PYTHON) ## Refresh data/set_release_dates.json from pokemontcg.io
+	$(VENV_PYTHON) -m cameo_convert.sets fetch
+	@echo "data/set_release_dates.json updated. Review the diff and commit."
+
 shell: $(VENV_PYTHON) ## Drop into a Python REPL with the package importable
 	$(VENV_PYTHON)
 
@@ -61,4 +65,4 @@ clean: ## Remove generated outputs and Python caches
 distclean: clean ## Also remove the virtualenv
 	rm -rf $(VENV)
 
-.PHONY: help install test run quick smoke verify goldens fixture shell clean distclean
+.PHONY: help install test run quick smoke verify goldens fixture fetch-sets shell clean distclean

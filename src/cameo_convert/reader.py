@@ -13,7 +13,10 @@ import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
+from cameo_convert.log import get_logger
 from cameo_convert.model import CameoEntry, Flag
+
+log = get_logger(__name__)
 
 NS_TABLE = "urn:oasis:names:tc:opendocument:xmlns:table:1.0"
 NS_TEXT = "urn:oasis:names:tc:opendocument:xmlns:text:1.0"
@@ -70,6 +73,7 @@ def read(ods_path: str | Path) -> tuple[list[CameoEntry], SourceMetadata]:
     styles = _build_style_map(content_tree.getroot())
     tables = content_tree.getroot().findall(f".//{{{NS_TABLE}}}table")
 
+    log.debug("resolved %d cell styles from automatic-styles", len(styles))
     entries: list[CameoEntry] = []
     main_text = ""
     unknown_sheets: list[str] = []
@@ -81,19 +85,17 @@ def read(ods_path: str | Path) -> tuple[list[CameoEntry], SourceMetadata]:
         # Match "Gen 1" through "Gen 99" (and beyond) — future generations
         # are picked up automatically; no code change needed when Gen 10 lands.
         if _GEN_SHEET_RE.match(name):
+            before = len(entries)
             entries.extend(_read_gen_sheet(name, tbl, styles))
+            log.debug("sheet %s → %d entries", name, len(entries) - before)
         elif name == "Trainers":
+            before = len(entries)
             entries.extend(_read_trainers_sheet(tbl, styles))
+            log.debug("sheet %s → %d entries", name, len(entries) - before)
         else:
             unknown_sheets.append(name)
     if unknown_sheets:
-        import warnings
-
-        warnings.warn(
-            f"cameo_convert.reader: ignoring unrecognized sheet(s): {unknown_sheets!r}. "
-            "Add handling in reader.read() if these contain cameo data.",
-            stacklevel=2,
-        )
+        log.warning("ignoring unrecognized sheet(s): %r — add handling in reader.read() if these contain cameo data", unknown_sheets)
 
     last_updated = None
     if meta_tree is not None:

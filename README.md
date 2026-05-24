@@ -46,6 +46,7 @@ Full target list:
 | `verify` | Clean + run + assert file count + spot-check §6.4 example |
 | `goldens` | Regenerate `tests/goldens/*.json` |
 | `fixture` | Rebuild `tests/fixtures/tiny_sample.ods` |
+| `fetch-sets` | Refresh `data/set_release_dates.json` from pokemontcg.io |
 | `shell` | Python REPL with the package importable |
 | `clean` | Remove `$(OUTPUT_DIR)` + Python caches |
 | `distclean` | `clean` + remove `.venv/` |
@@ -167,6 +168,49 @@ jq '.cards | to_entries | map(select(.value.cameos[].ndex > 1025)) | length' \
 
 If RotomAmiti changes the schema (e.g. introduces a new edge-case flag), see
 "Add a new flag" below.
+
+### Refresh set release dates (and add manual aliases for unmatched sets)
+
+Cards in human-facing outputs (MD/HTML/TXT) sort chronologically by set
+release date. Dates live in `data/set_release_dates.json`, sourced from
+[pokemontcg.io](https://pokemontcg.io/).
+
+```sh
+make fetch-sets
+```
+
+This GETs `/v2/sets`, merges with the existing JSON (preserving any manual
+`source_aliases` you added), and writes back. Review the diff and commit.
+
+The API covers ~170 sets — mostly English releases. Many source sets won't
+match automatically (Japanese promos, championship decks, special
+collections). To add a manual alias, edit `data/set_release_dates.json`:
+
+```json
+{
+  "sets": {
+    "xy-black-star-promos": {
+      "release_date": "2014-02-05",
+      "display_name": "XY Black Star Promos",
+      "series": "XY",
+      "ptcgo_code": "XYP",
+      "source_aliases": ["XY Black Star Promos", "XY Promos", "XY-P Promos"]
+    }
+  }
+}
+```
+
+`source_aliases` is a list of EXACT source set names that should resolve to
+this entry. The resolver tries (1) the slugified source name as a key, then
+(2) the source name in any `source_aliases` list.
+
+To add a brand-new entry for a set not in the API, add a top-level key under
+`sets` with at least `release_date` and `source_aliases`. The next `make
+fetch-sets` will preserve it.
+
+Cards whose set name doesn't resolve get `release_date: null` and sort to the
+end of their Pokémon bucket (alphabetically). Coverage today: ~57% of source
+sets (134/238) — the remaining 100+ are Japanese promo sets and similar.
 
 ### Add a new output format
 

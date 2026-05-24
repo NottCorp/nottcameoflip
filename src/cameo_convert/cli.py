@@ -10,11 +10,16 @@ import zipfile
 from pathlib import Path
 
 from cameo_convert import __version__
+from cameo_convert import sets as set_module
 from cameo_convert.filter import clean, full
+from cameo_convert.log import configure as configure_logging
+from cameo_convert.log import get_logger
 from cameo_convert.normalize import slug
 from cameo_convert.reader import read
 from cameo_convert.transform import invert
 from cameo_convert.writers import ALL_FORMATS, REGISTRY
+
+log = get_logger(__name__)
 
 ALL_VARIANTS = ("clean", "full")
 ALL_BUNDLES = ("zip", "tar.gz")
@@ -79,6 +84,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Bundle archive kinds: any of zip,tar.gz (default: both)",
     )
     p.add_argument(
+        "--log-level",
+        default=None,
+        help="Project log level (DEBUG/INFO/WARNING/CRITICAL). Default: DEBUG. "
+        "Env override: CAMEO_CONVERT_LOG_LEVEL.",
+    )
+    p.add_argument(
         "--version",
         action="version",
         version=f"%(prog)s {__version__}",
@@ -88,33 +99,42 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    configure_logging(args.log_level)
 
     unknown_formats = set(args.formats) - set(ALL_FORMATS)
     if unknown_formats:
-        print(f"error: unknown formats: {sorted(unknown_formats)}", file=sys.stderr)
-        print(f"  known: {sorted(ALL_FORMATS)}", file=sys.stderr)
+        log.critical("unknown formats: %s (known: %s)", sorted(unknown_formats), sorted(ALL_FORMATS))
         return 2
     unknown_variants = set(args.variants) - set(ALL_VARIANTS)
     if unknown_variants:
-        print(f"error: unknown variants: {sorted(unknown_variants)}", file=sys.stderr)
+        log.critical("unknown variants: %s", sorted(unknown_variants))
         return 2
     unknown_bundles = set(args.bundle) - set(ALL_BUNDLES) - {""}
     if unknown_bundles:
-        print(f"error: unknown bundle kinds: {sorted(unknown_bundles)}", file=sys.stderr)
+        log.critical("unknown bundle kinds: %s", sorted(unknown_bundles))
         return 2
 
     if not args.input.exists():
-        print(f"error: input not found: {args.input}", file=sys.stderr)
+        log.critical("input not found: %s", args.input)
         return 1
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"reading {args.input} …")
+    log.info("reading %s", args.input)
     entries, meta = read(args.input)
-    print(
-        f"  {len(entries)} entries; last_updated={meta.last_updated}; "
-        f"up-to-date-with={meta.up_to_date_with_set}"
+    log.info(
+        "parsed %d entries (source last_updated=%s, up-to-date-with=%s)",
+        len(entries), meta.last_updated, meta.up_to_date_with_set,
     )
+
+    set_dates = set_module.load(set_module.DEFAULT_JSON_PATH)
+    if len(set_dates) == 0:
+        log.warning(
+            "%s missing or empty — release dates will be unresolved (run `make fetch-sets`)",
+            set_module.DEFAULT_JSON_PATH,
+        )
+    else:
+        log.info("loaded %d known set release dates", len(set_dates))
 
     # The real source .ods doesn't carry a dc:date in meta.xml, so fall back
     # to the "up-to-date with all English releases up to and including X" set
@@ -127,6 +147,7 @@ def main(argv: list[str] | None = None) -> int:
         source_last_updated=source_last_updated,
         release_tag=args.release_tag,
         generator_version=__version__,
+        set_date_resolver=set_dates,
     )
 
     datasets = {}
@@ -138,12 +159,13 @@ def main(argv: list[str] | None = None) -> int:
     produced: list[Path] = []
     for variant in args.variants:
         ds = datasets[variant]
+        log.debug("variant %s: %d cards / %d cameo entries", variant, ds.total_cards, ds.total_cameo_entries)
         for fmt in args.formats:
             writer = REGISTRY[fmt]()
             path = args.output_dir / _filename(args.release_tag, variant, writer.extension)
             writer.write(ds, path)
             produced.append(path)
-            print(f"  wrote {path.name} ({path.stat().st_size:,} bytes)")
+            log.info("wrote %s (%s bytes)", path.name, f"{path.stat().st_size:,}")
 
     for kind in args.bundle:
         if not kind:
@@ -159,10 +181,10 @@ def main(argv: list[str] | None = None) -> int:
             with tarfile.open(bundle_path, "w:gz") as t:
                 for f in produced:
                     t.add(f, arcname=f.name)
-        print(f"  bundled {bundle_path.name} ({bundle_path.stat().st_size:,} bytes)")
+        log.info("bundled %s (%s bytes)", bundle_path.name, f"{bundle_path.stat().st_size:,}")
 
     total = len(produced) + sum(1 for k in args.bundle if k)
-    print(f"done — {total} files written to {args.output_dir}/")
+    log.info("done — %d files written to %s/", total, args.output_dir)
     return 0
 
 

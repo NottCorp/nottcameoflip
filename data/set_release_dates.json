@@ -1,0 +1,1576 @@
+{
+  "_meta": {
+    "source": "https://api.pokemontcg.io/v2/sets",
+    "fetched_at": "2026-05-24T06:48:45Z",
+    "set_count": 173
+  },
+  "sets": {
+    "151": {
+      "release_date": "2023-09-22",
+      "display_name": "151",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "MEW",
+      "source_aliases": [
+        "151"
+      ]
+    },
+    "ancient-origins": {
+      "release_date": "2015-08-12",
+      "display_name": "Ancient Origins",
+      "series": "XY",
+      "ptcgo_code": "AOR",
+      "source_aliases": [
+        "Ancient Origins"
+      ]
+    },
+    "aquapolis": {
+      "release_date": "2003-01-15",
+      "display_name": "Aquapolis",
+      "series": "E-Card",
+      "ptcgo_code": "AQ",
+      "source_aliases": [
+        "Aquapolis"
+      ]
+    },
+    "arceus": {
+      "release_date": "2009-11-04",
+      "display_name": "Arceus",
+      "series": "Platinum",
+      "ptcgo_code": "AR",
+      "source_aliases": [
+        "Arceus"
+      ]
+    },
+    "ascended-heroes": {
+      "release_date": "2026-01-30",
+      "display_name": "Ascended Heroes",
+      "series": "Mega Evolution",
+      "ptcgo_code": "ASC",
+      "source_aliases": [
+        "Ascended Heroes"
+      ]
+    },
+    "astral-radiance": {
+      "release_date": "2022-05-27",
+      "display_name": "Astral Radiance",
+      "series": "Sword & Shield",
+      "ptcgo_code": "ASR",
+      "source_aliases": [
+        "Astral Radiance"
+      ]
+    },
+    "astral-radiance-trainer-gallery": {
+      "release_date": "2022-05-27",
+      "display_name": "Astral Radiance Trainer Gallery",
+      "series": "Sword & Shield",
+      "ptcgo_code": "ASR",
+      "source_aliases": [
+        "Astral Radiance Trainer Gallery"
+      ]
+    },
+    "base": {
+      "release_date": "1999-01-09",
+      "display_name": "Base",
+      "series": "Base",
+      "ptcgo_code": "BS",
+      "source_aliases": [
+        "Base",
+        "Base Set"
+      ]
+    },
+    "base-set-2": {
+      "release_date": "2000-02-24",
+      "display_name": "Base Set 2",
+      "series": "Base",
+      "ptcgo_code": "B2",
+      "source_aliases": [
+        "Base Set 2"
+      ]
+    },
+    "battle-styles": {
+      "release_date": "2021-03-19",
+      "display_name": "Battle Styles",
+      "series": "Sword & Shield",
+      "ptcgo_code": "BST",
+      "source_aliases": [
+        "Battle Styles"
+      ]
+    },
+    "best-of-game": {
+      "release_date": "2002-12-01",
+      "display_name": "Best of Game",
+      "series": "Other",
+      "ptcgo_code": "BP",
+      "source_aliases": [
+        "Best of Game"
+      ]
+    },
+    "black-bolt": {
+      "release_date": "2025-07-18",
+      "display_name": "Black Bolt",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "BLK",
+      "source_aliases": [
+        "Black Bolt"
+      ]
+    },
+    "black-white": {
+      "release_date": "2011-04-25",
+      "display_name": "Black & White",
+      "series": "Black & White",
+      "ptcgo_code": "BLW",
+      "source_aliases": [
+        "Black & White"
+      ]
+    },
+    "boundaries-crossed": {
+      "release_date": "2012-11-07",
+      "display_name": "Boundaries Crossed",
+      "series": "Black & White",
+      "ptcgo_code": "BCR",
+      "source_aliases": [
+        "Boundaries Crossed"
+      ]
+    },
+    "breakpoint": {
+      "release_date": "2016-02-03",
+      "display_name": "BREAKpoint",
+      "series": "XY",
+      "ptcgo_code": "BKP",
+      "source_aliases": [
+        "BREAKpoint"
+      ]
+    },
+    "breakthrough": {
+      "release_date": "2015-11-04",
+      "display_name": "BREAKthrough",
+      "series": "XY",
+      "ptcgo_code": "BKT",
+      "source_aliases": [
+        "BREAKthrough"
+      ]
+    },
+    "brilliant-stars": {
+      "release_date": "2022-02-25",
+      "display_name": "Brilliant Stars",
+      "series": "Sword & Shield",
+      "ptcgo_code": "BRS",
+      "source_aliases": [
+        "Brilliant Stars"
+      ]
+    },
+    "brilliant-stars-trainer-gallery": {
+      "release_date": "2022-02-25",
+      "display_name": "Brilliant Stars Trainer Gallery",
+      "series": "Sword & Shield",
+      "ptcgo_code": "BRS",
+      "source_aliases": [
+        "Brilliant Stars Trainer Gallery"
+      ]
+    },
+    "burning-shadows": {
+      "release_date": "2017-08-05",
+      "display_name": "Burning Shadows",
+      "series": "Sun & Moon",
+      "ptcgo_code": "BUS",
+      "source_aliases": [
+        "Burning Shadows"
+      ]
+    },
+    "bw-black-star-promos": {
+      "release_date": "2011-03-01",
+      "display_name": "BW Black Star Promos",
+      "series": "Black & White",
+      "ptcgo_code": "PR-BLW",
+      "source_aliases": [
+        "BW Black Star Promos",
+        "BW Promos"
+      ]
+    },
+    "call-of-legends": {
+      "release_date": "2011-02-09",
+      "display_name": "Call of Legends",
+      "series": "HeartGold & SoulSilver",
+      "ptcgo_code": "CL",
+      "source_aliases": [
+        "Call of Legends"
+      ]
+    },
+    "celebrations": {
+      "release_date": "2021-10-08",
+      "display_name": "Celebrations",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CEL",
+      "source_aliases": [
+        "Celebrations"
+      ]
+    },
+    "celebrations-classic-collection": {
+      "release_date": "2021-10-08",
+      "display_name": "Celebrations: Classic Collection",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CEL",
+      "source_aliases": [
+        "Celebrations: Classic Collection"
+      ]
+    },
+    "celestial-storm": {
+      "release_date": "2018-08-03",
+      "display_name": "Celestial Storm",
+      "series": "Sun & Moon",
+      "ptcgo_code": "CES",
+      "source_aliases": [
+        "Celestial Storm"
+      ]
+    },
+    "champions-path": {
+      "release_date": "2020-09-25",
+      "display_name": "Champion's Path",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CPA",
+      "source_aliases": [
+        "Champion's Path"
+      ]
+    },
+    "chaos-rising": {
+      "release_date": "2026-05-22",
+      "display_name": "Chaos Rising",
+      "series": "Mega Evolution",
+      "ptcgo_code": "CRI",
+      "source_aliases": [
+        "Chaos Rising"
+      ]
+    },
+    "chilling-reign": {
+      "release_date": "2021-06-18",
+      "display_name": "Chilling Reign",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CRE",
+      "source_aliases": [
+        "Chilling Reign"
+      ]
+    },
+    "cosmic-eclipse": {
+      "release_date": "2019-11-01",
+      "display_name": "Cosmic Eclipse",
+      "series": "Sun & Moon",
+      "ptcgo_code": "CEC",
+      "source_aliases": [
+        "Cosmic Eclipse"
+      ]
+    },
+    "crimson-invasion": {
+      "release_date": "2017-11-03",
+      "display_name": "Crimson Invasion",
+      "series": "Sun & Moon",
+      "ptcgo_code": "CIN",
+      "source_aliases": [
+        "Crimson Invasion"
+      ]
+    },
+    "crown-zenith": {
+      "release_date": "2023-01-20",
+      "display_name": "Crown Zenith",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CRZ",
+      "source_aliases": [
+        "Crown Zenith"
+      ]
+    },
+    "crown-zenith-galarian-gallery": {
+      "release_date": "2023-01-20",
+      "display_name": "Crown Zenith Galarian Gallery",
+      "series": "Sword & Shield",
+      "ptcgo_code": "CRZ",
+      "source_aliases": [
+        "Crown Zenith Galarian Gallery"
+      ]
+    },
+    "crystal-guardians": {
+      "release_date": "2006-08-01",
+      "display_name": "Crystal Guardians",
+      "series": "EX",
+      "ptcgo_code": "CG",
+      "source_aliases": [
+        "Crystal Guardians"
+      ]
+    },
+    "dark-explorers": {
+      "release_date": "2012-05-09",
+      "display_name": "Dark Explorers",
+      "series": "Black & White",
+      "ptcgo_code": "DEX",
+      "source_aliases": [
+        "Dark Explorers"
+      ]
+    },
+    "darkness-ablaze": {
+      "release_date": "2020-08-14",
+      "display_name": "Darkness Ablaze",
+      "series": "Sword & Shield",
+      "ptcgo_code": "DAA",
+      "source_aliases": [
+        "Darkness Ablaze"
+      ]
+    },
+    "delta-species": {
+      "release_date": "2005-10-31",
+      "display_name": "Delta Species",
+      "series": "EX",
+      "ptcgo_code": "DS",
+      "source_aliases": [
+        "Delta Species"
+      ]
+    },
+    "deoxys": {
+      "release_date": "2005-02-01",
+      "display_name": "Deoxys",
+      "series": "EX",
+      "ptcgo_code": "DX",
+      "source_aliases": [
+        "Deoxys"
+      ]
+    },
+    "destined-rivals": {
+      "release_date": "2025-05-30",
+      "display_name": "Destined Rivals",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "DRI",
+      "source_aliases": [
+        "Destined Rivals"
+      ]
+    },
+    "detective-pikachu": {
+      "release_date": "2019-04-05",
+      "display_name": "Detective Pikachu",
+      "series": "Sun & Moon",
+      "ptcgo_code": "DET",
+      "source_aliases": [
+        "Detective Pikachu"
+      ]
+    },
+    "diamond-pearl": {
+      "release_date": "2007-05-01",
+      "display_name": "Diamond & Pearl",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "DP",
+      "source_aliases": [
+        "Diamond & Pearl"
+      ]
+    },
+    "double-crisis": {
+      "release_date": "2015-03-25",
+      "display_name": "Double Crisis",
+      "series": "XY",
+      "ptcgo_code": "DCR",
+      "source_aliases": [
+        "Double Crisis"
+      ]
+    },
+    "dp-black-star-promos": {
+      "release_date": "2007-05-01",
+      "display_name": "DP Black Star Promos",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "PR-DPP",
+      "source_aliases": [
+        "DP Black Star Promos",
+        "DP Promos"
+      ]
+    },
+    "dragon": {
+      "release_date": "2003-11-24",
+      "display_name": "Dragon",
+      "series": "EX",
+      "ptcgo_code": "DR",
+      "source_aliases": [
+        "Dragon"
+      ]
+    },
+    "dragon-frontiers": {
+      "release_date": "2006-11-01",
+      "display_name": "Dragon Frontiers",
+      "series": "EX",
+      "ptcgo_code": "DF",
+      "source_aliases": [
+        "Dragon Frontiers"
+      ]
+    },
+    "dragon-majesty": {
+      "release_date": "2018-09-07",
+      "display_name": "Dragon Majesty",
+      "series": "Sun & Moon",
+      "ptcgo_code": "DRM",
+      "source_aliases": [
+        "Dragon Majesty"
+      ]
+    },
+    "dragon-vault": {
+      "release_date": "2012-10-05",
+      "display_name": "Dragon Vault",
+      "series": "Black & White",
+      "ptcgo_code": "DRV",
+      "source_aliases": [
+        "Dragon Vault"
+      ]
+    },
+    "dragons-exalted": {
+      "release_date": "2012-08-15",
+      "display_name": "Dragons Exalted",
+      "series": "Black & White",
+      "ptcgo_code": "DRX",
+      "source_aliases": [
+        "Dragons Exalted"
+      ]
+    },
+    "emerald": {
+      "release_date": "2005-05-01",
+      "display_name": "Emerald",
+      "series": "EX",
+      "ptcgo_code": "EM",
+      "source_aliases": [
+        "Emerald"
+      ]
+    },
+    "emerging-powers": {
+      "release_date": "2011-08-31",
+      "display_name": "Emerging Powers",
+      "series": "Black & White",
+      "ptcgo_code": "EPO",
+      "source_aliases": [
+        "Emerging Powers"
+      ]
+    },
+    "evolutions": {
+      "release_date": "2016-11-02",
+      "display_name": "Evolutions",
+      "series": "XY",
+      "ptcgo_code": "EVO",
+      "source_aliases": [
+        "Evolutions"
+      ]
+    },
+    "evolving-skies": {
+      "release_date": "2021-08-27",
+      "display_name": "Evolving Skies",
+      "series": "Sword & Shield",
+      "ptcgo_code": "EVS",
+      "source_aliases": [
+        "Evolving Skies"
+      ]
+    },
+    "ex-trainer-kit-2-minun": {
+      "release_date": "2006-03-01",
+      "display_name": "EX Trainer Kit 2 Minun",
+      "series": "EX",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "EX Trainer Kit 2 Minun"
+      ]
+    },
+    "ex-trainer-kit-2-plusle": {
+      "release_date": "2006-03-01",
+      "display_name": "EX Trainer Kit 2 Plusle",
+      "series": "EX",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "EX Trainer Kit 2 Plusle"
+      ]
+    },
+    "ex-trainer-kit-latias": {
+      "release_date": "2004-06-01",
+      "display_name": "EX Trainer Kit Latias",
+      "series": "EX",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "EX Trainer Kit Latias"
+      ]
+    },
+    "ex-trainer-kit-latios": {
+      "release_date": "2004-06-01",
+      "display_name": "EX Trainer Kit Latios",
+      "series": "EX",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "EX Trainer Kit Latios"
+      ]
+    },
+    "expedition-base-set": {
+      "release_date": "2002-09-15",
+      "display_name": "Expedition Base Set",
+      "series": "E-Card",
+      "ptcgo_code": "EX",
+      "source_aliases": [
+        "Expedition Base Set"
+      ]
+    },
+    "fates-collide": {
+      "release_date": "2016-05-02",
+      "display_name": "Fates Collide",
+      "series": "XY",
+      "ptcgo_code": "FCO",
+      "source_aliases": [
+        "Fates Collide"
+      ]
+    },
+    "firered-leafgreen": {
+      "release_date": "2004-09-01",
+      "display_name": "FireRed & LeafGreen",
+      "series": "EX",
+      "ptcgo_code": "RG",
+      "source_aliases": [
+        "FireRed & LeafGreen"
+      ]
+    },
+    "flashfire": {
+      "release_date": "2014-05-07",
+      "display_name": "Flashfire",
+      "series": "XY",
+      "ptcgo_code": "FLF",
+      "source_aliases": [
+        "Flashfire"
+      ]
+    },
+    "forbidden-light": {
+      "release_date": "2018-05-04",
+      "display_name": "Forbidden Light",
+      "series": "Sun & Moon",
+      "ptcgo_code": "FLI",
+      "source_aliases": [
+        "Forbidden Light"
+      ]
+    },
+    "fossil": {
+      "release_date": "1999-10-10",
+      "display_name": "Fossil",
+      "series": "Base",
+      "ptcgo_code": "FO",
+      "source_aliases": [
+        "Fossil"
+      ]
+    },
+    "furious-fists": {
+      "release_date": "2014-08-13",
+      "display_name": "Furious Fists",
+      "series": "XY",
+      "ptcgo_code": "FFI",
+      "source_aliases": [
+        "Furious Fists"
+      ]
+    },
+    "fusion-strike": {
+      "release_date": "2021-11-12",
+      "display_name": "Fusion Strike",
+      "series": "Sword & Shield",
+      "ptcgo_code": "FST",
+      "source_aliases": [
+        "Fusion Strike"
+      ]
+    },
+    "generations": {
+      "release_date": "2016-02-22",
+      "display_name": "Generations",
+      "series": "XY",
+      "ptcgo_code": "GEN",
+      "source_aliases": [
+        "Generations"
+      ]
+    },
+    "great-encounters": {
+      "release_date": "2008-02-01",
+      "display_name": "Great Encounters",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "GE",
+      "source_aliases": [
+        "Great Encounters"
+      ]
+    },
+    "guardians-rising": {
+      "release_date": "2017-05-05",
+      "display_name": "Guardians Rising",
+      "series": "Sun & Moon",
+      "ptcgo_code": "GRI",
+      "source_aliases": [
+        "Guardians Rising"
+      ]
+    },
+    "gym-challenge": {
+      "release_date": "2000-10-16",
+      "display_name": "Gym Challenge",
+      "series": "Gym",
+      "ptcgo_code": "G2",
+      "source_aliases": [
+        "Gym Challenge"
+      ]
+    },
+    "gym-heroes": {
+      "release_date": "2000-08-14",
+      "display_name": "Gym Heroes",
+      "series": "Gym",
+      "ptcgo_code": "G1",
+      "source_aliases": [
+        "Gym Heroes"
+      ]
+    },
+    "heartgold-soulsilver": {
+      "release_date": "2010-02-10",
+      "display_name": "HeartGold & SoulSilver",
+      "series": "HeartGold & SoulSilver",
+      "ptcgo_code": "HS",
+      "source_aliases": [
+        "HeartGold & SoulSilver"
+      ]
+    },
+    "hgss-black-star-promos": {
+      "release_date": "2010-02-10",
+      "display_name": "HGSS Black Star Promos",
+      "series": "HeartGold & SoulSilver",
+      "ptcgo_code": "PR-HS",
+      "source_aliases": [
+        "HGSS Black Star Promos",
+        "HGSS Promos"
+      ]
+    },
+    "hidden-fates": {
+      "release_date": "2019-08-23",
+      "display_name": "Hidden Fates",
+      "series": "Sun & Moon",
+      "ptcgo_code": "HIF",
+      "source_aliases": [
+        "Hidden Fates"
+      ]
+    },
+    "hidden-fates-shiny-vault": {
+      "release_date": "2019-08-23",
+      "display_name": "Hidden Fates Shiny Vault",
+      "series": "Sun & Moon",
+      "ptcgo_code": "HIF",
+      "source_aliases": [
+        "Hidden Fates Shiny Vault"
+      ]
+    },
+    "hidden-legends": {
+      "release_date": "2004-06-01",
+      "display_name": "Hidden Legends",
+      "series": "EX",
+      "ptcgo_code": "HL",
+      "source_aliases": [
+        "Hidden Legends"
+      ]
+    },
+    "holon-phantoms": {
+      "release_date": "2006-05-01",
+      "display_name": "Holon Phantoms",
+      "series": "EX",
+      "ptcgo_code": "HP",
+      "source_aliases": [
+        "Holon Phantoms"
+      ]
+    },
+    "hs-triumphant": {
+      "release_date": "2010-11-03",
+      "display_name": "HS—Triumphant",
+      "series": "HeartGold & SoulSilver",
+      "ptcgo_code": "TM",
+      "source_aliases": [
+        "HS—Triumphant"
+      ]
+    },
+    "hs-undaunted": {
+      "release_date": "2010-08-18",
+      "display_name": "HS—Undaunted",
+      "series": "HeartGold & SoulSilver",
+      "ptcgo_code": "UD",
+      "source_aliases": [
+        "HS—Undaunted"
+      ]
+    },
+    "hs-unleashed": {
+      "release_date": "2010-05-12",
+      "display_name": "HS—Unleashed",
+      "series": "HeartGold & SoulSilver",
+      "ptcgo_code": "UL",
+      "source_aliases": [
+        "HS—Unleashed"
+      ]
+    },
+    "journey-together": {
+      "release_date": "2025-03-28",
+      "display_name": "Journey Together",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "JTG",
+      "source_aliases": [
+        "Journey Together"
+      ]
+    },
+    "jungle": {
+      "release_date": "1999-06-16",
+      "display_name": "Jungle",
+      "series": "Base",
+      "ptcgo_code": "JU",
+      "source_aliases": [
+        "Jungle"
+      ]
+    },
+    "kalos-starter-set": {
+      "release_date": "2013-11-08",
+      "display_name": "Kalos Starter Set",
+      "series": "XY",
+      "ptcgo_code": "KSS",
+      "source_aliases": [
+        "Kalos Starter Set"
+      ]
+    },
+    "legend-maker": {
+      "release_date": "2006-02-01",
+      "display_name": "Legend Maker",
+      "series": "EX",
+      "ptcgo_code": "LM",
+      "source_aliases": [
+        "Legend Maker"
+      ]
+    },
+    "legendary-collection": {
+      "release_date": "2002-05-24",
+      "display_name": "Legendary Collection",
+      "series": "Other",
+      "ptcgo_code": "LC",
+      "source_aliases": [
+        "Legendary Collection"
+      ]
+    },
+    "legendary-treasures": {
+      "release_date": "2013-11-06",
+      "display_name": "Legendary Treasures",
+      "series": "Black & White",
+      "ptcgo_code": "LTR",
+      "source_aliases": [
+        "Legendary Treasures"
+      ]
+    },
+    "legends-awakened": {
+      "release_date": "2008-08-01",
+      "display_name": "Legends Awakened",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "LA",
+      "source_aliases": [
+        "Legends Awakened"
+      ]
+    },
+    "lost-origin": {
+      "release_date": "2022-09-09",
+      "display_name": "Lost Origin",
+      "series": "Sword & Shield",
+      "ptcgo_code": "LOR",
+      "source_aliases": [
+        "Lost Origin"
+      ]
+    },
+    "lost-origin-trainer-gallery": {
+      "release_date": "2022-09-09",
+      "display_name": "Lost Origin Trainer Gallery",
+      "series": "Sword & Shield",
+      "ptcgo_code": "LOR",
+      "source_aliases": [
+        "Lost Origin Trainer Gallery"
+      ]
+    },
+    "lost-thunder": {
+      "release_date": "2018-11-02",
+      "display_name": "Lost Thunder",
+      "series": "Sun & Moon",
+      "ptcgo_code": "LOT",
+      "source_aliases": [
+        "Lost Thunder"
+      ]
+    },
+    "majestic-dawn": {
+      "release_date": "2008-05-01",
+      "display_name": "Majestic Dawn",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "MD",
+      "source_aliases": [
+        "Majestic Dawn"
+      ]
+    },
+    "mcdonalds-collection-2011": {
+      "release_date": "2011-06-17",
+      "display_name": "McDonald's Collection 2011",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2011"
+      ]
+    },
+    "mcdonalds-collection-2012": {
+      "release_date": "2012-06-15",
+      "display_name": "McDonald's Collection 2012",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2012"
+      ]
+    },
+    "mcdonalds-collection-2014": {
+      "release_date": "2014-05-23",
+      "display_name": "McDonald's Collection 2014",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2014"
+      ]
+    },
+    "mcdonalds-collection-2015": {
+      "release_date": "2015-11-27",
+      "display_name": "McDonald's Collection 2015",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2015"
+      ]
+    },
+    "mcdonalds-collection-2016": {
+      "release_date": "2016-08-19",
+      "display_name": "McDonald's Collection 2016",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2016"
+      ]
+    },
+    "mcdonalds-collection-2017": {
+      "release_date": "2017-11-07",
+      "display_name": "McDonald's Collection 2017",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2017"
+      ]
+    },
+    "mcdonalds-collection-2018": {
+      "release_date": "2018-10-16",
+      "display_name": "McDonald's Collection 2018",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2018"
+      ]
+    },
+    "mcdonalds-collection-2019": {
+      "release_date": "2019-10-15",
+      "display_name": "McDonald's Collection 2019",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2019"
+      ]
+    },
+    "mcdonalds-collection-2021": {
+      "release_date": "2021-02-09",
+      "display_name": "McDonald's Collection 2021",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2021"
+      ]
+    },
+    "mcdonalds-collection-2022": {
+      "release_date": "2022-08-03",
+      "display_name": "McDonald's Collection 2022",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "McDonald's Collection 2022"
+      ]
+    },
+    "mega-evolution": {
+      "release_date": "2025-09-26",
+      "display_name": "Mega Evolution",
+      "series": "Mega Evolution",
+      "ptcgo_code": "MEG",
+      "source_aliases": [
+        "Mega Evolution"
+      ]
+    },
+    "mysterious-treasures": {
+      "release_date": "2007-08-01",
+      "display_name": "Mysterious Treasures",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "MT",
+      "source_aliases": [
+        "Mysterious Treasures"
+      ]
+    },
+    "neo-destiny": {
+      "release_date": "2002-02-28",
+      "display_name": "Neo Destiny",
+      "series": "Neo",
+      "ptcgo_code": "N4",
+      "source_aliases": [
+        "Neo Destiny"
+      ]
+    },
+    "neo-discovery": {
+      "release_date": "2001-06-01",
+      "display_name": "Neo Discovery",
+      "series": "Neo",
+      "ptcgo_code": "N2",
+      "source_aliases": [
+        "Neo Discovery"
+      ]
+    },
+    "neo-genesis": {
+      "release_date": "2000-12-16",
+      "display_name": "Neo Genesis",
+      "series": "Neo",
+      "ptcgo_code": "N1",
+      "source_aliases": [
+        "Neo Genesis"
+      ]
+    },
+    "neo-revelation": {
+      "release_date": "2001-09-21",
+      "display_name": "Neo Revelation",
+      "series": "Neo",
+      "ptcgo_code": "N3",
+      "source_aliases": [
+        "Neo Revelation"
+      ]
+    },
+    "next-destinies": {
+      "release_date": "2012-02-08",
+      "display_name": "Next Destinies",
+      "series": "Black & White",
+      "ptcgo_code": "NXD",
+      "source_aliases": [
+        "Next Destinies"
+      ]
+    },
+    "nintendo-black-star-promos": {
+      "release_date": "2003-10-01",
+      "display_name": "Nintendo Black Star Promos",
+      "series": "NP",
+      "ptcgo_code": "PR-NP",
+      "source_aliases": [
+        "Nintendo Black Star Promos",
+        "Nintendo Promos"
+      ]
+    },
+    "noble-victories": {
+      "release_date": "2011-11-16",
+      "display_name": "Noble Victories",
+      "series": "Black & White",
+      "ptcgo_code": "NVI",
+      "source_aliases": [
+        "Noble Victories"
+      ]
+    },
+    "obsidian-flames": {
+      "release_date": "2023-08-11",
+      "display_name": "Obsidian Flames",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "OBF",
+      "source_aliases": [
+        "Obsidian Flames"
+      ]
+    },
+    "paldea-evolved": {
+      "release_date": "2023-06-09",
+      "display_name": "Paldea Evolved",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "PAL",
+      "source_aliases": [
+        "Paldea Evolved"
+      ]
+    },
+    "paldean-fates": {
+      "release_date": "2024-01-26",
+      "display_name": "Paldean Fates",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "PAF",
+      "source_aliases": [
+        "Paldean Fates"
+      ]
+    },
+    "paradox-rift": {
+      "release_date": "2023-11-03",
+      "display_name": "Paradox Rift",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "PAR",
+      "source_aliases": [
+        "Paradox Rift"
+      ]
+    },
+    "perfect-order": {
+      "release_date": "2026-03-27",
+      "display_name": "Perfect Order",
+      "series": "Mega Evolution",
+      "ptcgo_code": "POR",
+      "source_aliases": [
+        "Perfect Order"
+      ]
+    },
+    "phantasmal-flames": {
+      "release_date": "2025-11-14",
+      "display_name": "Phantasmal Flames",
+      "series": "Mega Evolution",
+      "ptcgo_code": "PFL",
+      "source_aliases": [
+        "Phantasmal Flames"
+      ]
+    },
+    "phantom-forces": {
+      "release_date": "2014-11-05",
+      "display_name": "Phantom Forces",
+      "series": "XY",
+      "ptcgo_code": "PHF",
+      "source_aliases": [
+        "Phantom Forces"
+      ]
+    },
+    "plasma-blast": {
+      "release_date": "2013-08-14",
+      "display_name": "Plasma Blast",
+      "series": "Black & White",
+      "ptcgo_code": "PLB",
+      "source_aliases": [
+        "Plasma Blast"
+      ]
+    },
+    "plasma-freeze": {
+      "release_date": "2013-05-08",
+      "display_name": "Plasma Freeze",
+      "series": "Black & White",
+      "ptcgo_code": "PLF",
+      "source_aliases": [
+        "Plasma Freeze"
+      ]
+    },
+    "plasma-storm": {
+      "release_date": "2013-02-06",
+      "display_name": "Plasma Storm",
+      "series": "Black & White",
+      "ptcgo_code": "PLS",
+      "source_aliases": [
+        "Plasma Storm"
+      ]
+    },
+    "platinum": {
+      "release_date": "2009-02-11",
+      "display_name": "Platinum",
+      "series": "Platinum",
+      "ptcgo_code": "PL",
+      "source_aliases": [
+        "Platinum"
+      ]
+    },
+    "pokemon-futsal-collection": {
+      "release_date": "2020-09-11",
+      "display_name": "Pokémon Futsal Collection",
+      "series": "Other",
+      "ptcgo_code": "FUT20",
+      "source_aliases": [
+        "Pokémon Futsal Collection"
+      ]
+    },
+    "pokemon-go": {
+      "release_date": "2022-07-01",
+      "display_name": "Pokémon GO",
+      "series": "Sword & Shield",
+      "ptcgo_code": "PGO",
+      "source_aliases": [
+        "Pokémon GO"
+      ]
+    },
+    "pokemon-rumble": {
+      "release_date": "2009-12-02",
+      "display_name": "Pokémon Rumble",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "Pokémon Rumble"
+      ]
+    },
+    "pop-series-1": {
+      "release_date": "2004-09-01",
+      "display_name": "POP Series 1",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 1"
+      ]
+    },
+    "pop-series-2": {
+      "release_date": "2005-08-01",
+      "display_name": "POP Series 2",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 2"
+      ]
+    },
+    "pop-series-3": {
+      "release_date": "2006-04-01",
+      "display_name": "POP Series 3",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 3"
+      ]
+    },
+    "pop-series-4": {
+      "release_date": "2006-08-01",
+      "display_name": "POP Series 4",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 4"
+      ]
+    },
+    "pop-series-5": {
+      "release_date": "2007-03-01",
+      "display_name": "POP Series 5",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 5"
+      ]
+    },
+    "pop-series-6": {
+      "release_date": "2007-09-01",
+      "display_name": "POP Series 6",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 6"
+      ]
+    },
+    "pop-series-7": {
+      "release_date": "2008-03-01",
+      "display_name": "POP Series 7",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 7"
+      ]
+    },
+    "pop-series-8": {
+      "release_date": "2008-09-01",
+      "display_name": "POP Series 8",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 8"
+      ]
+    },
+    "pop-series-9": {
+      "release_date": "2009-03-01",
+      "display_name": "POP Series 9",
+      "series": "POP",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "POP Series 9"
+      ]
+    },
+    "power-keepers": {
+      "release_date": "2007-02-02",
+      "display_name": "Power Keepers",
+      "series": "EX",
+      "ptcgo_code": "PK",
+      "source_aliases": [
+        "Power Keepers"
+      ]
+    },
+    "primal-clash": {
+      "release_date": "2015-02-04",
+      "display_name": "Primal Clash",
+      "series": "XY",
+      "ptcgo_code": "PRC",
+      "source_aliases": [
+        "Primal Clash"
+      ]
+    },
+    "prismatic-evolutions": {
+      "release_date": "2025-01-17",
+      "display_name": "Prismatic Evolutions",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "PRE",
+      "source_aliases": [
+        "Prismatic Evolutions"
+      ]
+    },
+    "rebel-clash": {
+      "release_date": "2020-05-01",
+      "display_name": "Rebel Clash",
+      "series": "Sword & Shield",
+      "ptcgo_code": "RCL",
+      "source_aliases": [
+        "Rebel Clash"
+      ]
+    },
+    "rising-rivals": {
+      "release_date": "2009-05-16",
+      "display_name": "Rising Rivals",
+      "series": "Platinum",
+      "ptcgo_code": "RR",
+      "source_aliases": [
+        "Rising Rivals"
+      ]
+    },
+    "roaring-skies": {
+      "release_date": "2015-05-06",
+      "display_name": "Roaring Skies",
+      "series": "XY",
+      "ptcgo_code": "ROS",
+      "source_aliases": [
+        "Roaring Skies"
+      ]
+    },
+    "ruby-sapphire": {
+      "release_date": "2003-07-01",
+      "display_name": "Ruby & Sapphire",
+      "series": "EX",
+      "ptcgo_code": "RS",
+      "source_aliases": [
+        "Ruby & Sapphire"
+      ]
+    },
+    "sandstorm": {
+      "release_date": "2003-09-18",
+      "display_name": "Sandstorm",
+      "series": "EX",
+      "ptcgo_code": "SS",
+      "source_aliases": [
+        "Sandstorm"
+      ]
+    },
+    "scarlet-violet": {
+      "release_date": "2023-03-31",
+      "display_name": "Scarlet & Violet",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "SVI",
+      "source_aliases": [
+        "Scarlet & Violet"
+      ]
+    },
+    "scarlet-violet-black-star-promos": {
+      "release_date": "2023-01-01",
+      "display_name": "Scarlet & Violet Black Star Promos",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "PR-SV",
+      "source_aliases": [
+        "Scarlet & Violet Black Star Promos",
+        "Scarlet & Violet Promos"
+      ]
+    },
+    "scarlet-violet-energies": {
+      "release_date": "2023-03-31",
+      "display_name": "Scarlet & Violet Energies",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "SVE",
+      "source_aliases": [
+        "Scarlet & Violet Energies"
+      ]
+    },
+    "secret-wonders": {
+      "release_date": "2007-11-01",
+      "display_name": "Secret Wonders",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "SW",
+      "source_aliases": [
+        "Secret Wonders"
+      ]
+    },
+    "shining-fates": {
+      "release_date": "2021-02-19",
+      "display_name": "Shining Fates",
+      "series": "Sword & Shield",
+      "ptcgo_code": "SHF",
+      "source_aliases": [
+        "Shining Fates"
+      ]
+    },
+    "shining-fates-shiny-vault": {
+      "release_date": "2021-02-19",
+      "display_name": "Shining Fates Shiny Vault",
+      "series": "Sword & Shield",
+      "ptcgo_code": "SHF",
+      "source_aliases": [
+        "Shining Fates Shiny Vault"
+      ]
+    },
+    "shining-legends": {
+      "release_date": "2017-10-06",
+      "display_name": "Shining Legends",
+      "series": "Sun & Moon",
+      "ptcgo_code": "SLG",
+      "source_aliases": [
+        "Shining Legends"
+      ]
+    },
+    "shrouded-fable": {
+      "release_date": "2024-08-02",
+      "display_name": "Shrouded Fable",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "SFA",
+      "source_aliases": [
+        "Shrouded Fable"
+      ]
+    },
+    "silver-tempest": {
+      "release_date": "2022-11-11",
+      "display_name": "Silver Tempest",
+      "series": "Sword & Shield",
+      "ptcgo_code": "SIT",
+      "source_aliases": [
+        "Silver Tempest"
+      ]
+    },
+    "silver-tempest-trainer-gallery": {
+      "release_date": "2022-11-11",
+      "display_name": "Silver Tempest Trainer Gallery",
+      "series": "Sword & Shield",
+      "ptcgo_code": "SIT",
+      "source_aliases": [
+        "Silver Tempest Trainer Gallery"
+      ]
+    },
+    "skyridge": {
+      "release_date": "2003-05-12",
+      "display_name": "Skyridge",
+      "series": "E-Card",
+      "ptcgo_code": "SK",
+      "source_aliases": [
+        "Skyridge"
+      ]
+    },
+    "sm-black-star-promos": {
+      "release_date": "2017-02-03",
+      "display_name": "SM Black Star Promos",
+      "series": "Sun & Moon",
+      "ptcgo_code": "PR-SM",
+      "source_aliases": [
+        "SM Black Star Promos",
+        "SM Promos"
+      ]
+    },
+    "southern-islands": {
+      "release_date": "2001-07-31",
+      "display_name": "Southern Islands",
+      "series": "Other",
+      "ptcgo_code": null,
+      "source_aliases": [
+        "Southern Islands"
+      ]
+    },
+    "steam-siege": {
+      "release_date": "2016-08-03",
+      "display_name": "Steam Siege",
+      "series": "XY",
+      "ptcgo_code": "STS",
+      "source_aliases": [
+        "Steam Siege"
+      ]
+    },
+    "stellar-crown": {
+      "release_date": "2024-09-13",
+      "display_name": "Stellar Crown",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "SCR",
+      "source_aliases": [
+        "Stellar Crown"
+      ]
+    },
+    "stormfront": {
+      "release_date": "2008-11-01",
+      "display_name": "Stormfront",
+      "series": "Diamond & Pearl",
+      "ptcgo_code": "SF",
+      "source_aliases": [
+        "Stormfront"
+      ]
+    },
+    "sun-moon": {
+      "release_date": "2017-02-03",
+      "display_name": "Sun & Moon",
+      "series": "Sun & Moon",
+      "ptcgo_code": "SUM",
+      "source_aliases": [
+        "Sun & Moon"
+      ]
+    },
+    "supreme-victors": {
+      "release_date": "2009-08-19",
+      "display_name": "Supreme Victors",
+      "series": "Platinum",
+      "ptcgo_code": "SV",
+      "source_aliases": [
+        "Supreme Victors"
+      ]
+    },
+    "surging-sparks": {
+      "release_date": "2024-11-08",
+      "display_name": "Surging Sparks",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "SSP",
+      "source_aliases": [
+        "Surging Sparks"
+      ]
+    },
+    "sword-shield": {
+      "release_date": "2020-02-07",
+      "display_name": "Sword & Shield",
+      "series": "Sword & Shield",
+      "ptcgo_code": "SSH",
+      "source_aliases": [
+        "Sword & Shield"
+      ]
+    },
+    "swsh-black-star-promos": {
+      "release_date": "2019-11-15",
+      "display_name": "SWSH Black Star Promos",
+      "series": "Sword & Shield",
+      "ptcgo_code": "PR-SW",
+      "source_aliases": [
+        "SWSH Black Star Promos",
+        "SWSH Promos"
+      ]
+    },
+    "team-magma-vs-team-aqua": {
+      "release_date": "2004-03-01",
+      "display_name": "Team Magma vs Team Aqua",
+      "series": "EX",
+      "ptcgo_code": "MA",
+      "source_aliases": [
+        "Team Magma vs Team Aqua"
+      ]
+    },
+    "team-rocket": {
+      "release_date": "2000-04-24",
+      "display_name": "Team Rocket",
+      "series": "Base",
+      "ptcgo_code": "TR",
+      "source_aliases": [
+        "Team Rocket"
+      ]
+    },
+    "team-rocket-returns": {
+      "release_date": "2004-11-01",
+      "display_name": "Team Rocket Returns",
+      "series": "EX",
+      "ptcgo_code": "TRR",
+      "source_aliases": [
+        "Team Rocket Returns"
+      ]
+    },
+    "team-up": {
+      "release_date": "2019-02-01",
+      "display_name": "Team Up",
+      "series": "Sun & Moon",
+      "ptcgo_code": "TEU",
+      "source_aliases": [
+        "Team Up"
+      ]
+    },
+    "temporal-forces": {
+      "release_date": "2024-03-22",
+      "display_name": "Temporal Forces",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "TEF",
+      "source_aliases": [
+        "Temporal Forces"
+      ]
+    },
+    "twilight-masquerade": {
+      "release_date": "2024-05-24",
+      "display_name": "Twilight Masquerade",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "TWM",
+      "source_aliases": [
+        "Twilight Masquerade"
+      ]
+    },
+    "ultra-prism": {
+      "release_date": "2018-02-02",
+      "display_name": "Ultra Prism",
+      "series": "Sun & Moon",
+      "ptcgo_code": "UPR",
+      "source_aliases": [
+        "Ultra Prism"
+      ]
+    },
+    "unbroken-bonds": {
+      "release_date": "2019-05-03",
+      "display_name": "Unbroken Bonds",
+      "series": "Sun & Moon",
+      "ptcgo_code": "UNB",
+      "source_aliases": [
+        "Unbroken Bonds"
+      ]
+    },
+    "unified-minds": {
+      "release_date": "2019-08-02",
+      "display_name": "Unified Minds",
+      "series": "Sun & Moon",
+      "ptcgo_code": "UNM",
+      "source_aliases": [
+        "Unified Minds"
+      ]
+    },
+    "unseen-forces": {
+      "release_date": "2005-08-01",
+      "display_name": "Unseen Forces",
+      "series": "EX",
+      "ptcgo_code": "UF",
+      "source_aliases": [
+        "Unseen Forces"
+      ]
+    },
+    "vivid-voltage": {
+      "release_date": "2020-11-13",
+      "display_name": "Vivid Voltage",
+      "series": "Sword & Shield",
+      "ptcgo_code": "VIV",
+      "source_aliases": [
+        "Vivid Voltage"
+      ]
+    },
+    "white-flare": {
+      "release_date": "2025-07-18",
+      "display_name": "White Flare",
+      "series": "Scarlet & Violet",
+      "ptcgo_code": "WHT",
+      "source_aliases": [
+        "White Flare"
+      ]
+    },
+    "wizards-black-star-promos": {
+      "release_date": "1999-07-01",
+      "display_name": "Wizards Black Star Promos",
+      "series": "Base",
+      "ptcgo_code": "PR",
+      "source_aliases": [
+        "Wizards Black Star Promos",
+        "Wizards Promos"
+      ]
+    },
+    "xy": {
+      "release_date": "2014-02-05",
+      "display_name": "XY",
+      "series": "XY",
+      "ptcgo_code": "XY",
+      "source_aliases": [
+        "XY"
+      ]
+    },
+    "xy-black-star-promos": {
+      "release_date": "2013-10-12",
+      "display_name": "XY Black Star Promos",
+      "series": "XY",
+      "ptcgo_code": "PR-XY",
+      "source_aliases": [
+        "XY Black Star Promos",
+        "XY Promos"
+      ]
+    }
+  }
+}

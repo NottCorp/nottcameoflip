@@ -10,10 +10,12 @@ import yaml
 
 from cameo_convert.filter import clean, full
 from cameo_convert.reader import read
+from cameo_convert.sets import load as load_set_dates
 from cameo_convert.transform import invert
 from cameo_convert.writers import ALL_FORMATS, REGISTRY
 
 FIXTURE = Path(__file__).parent / "fixtures" / "tiny_sample.ods"
+SET_DATES_FIXTURE = Path(__file__).parent / "fixtures" / "set_release_dates.json"
 
 
 @pytest.fixture(scope="module")
@@ -24,6 +26,7 @@ def dataset():
         source_file="tests/fixtures/tiny_sample.ods",
         source_last_updated=meta.last_updated,
         release_tag="v0.test",
+        set_date_resolver=load_set_dates(SET_DATES_FIXTURE),
     )
 
 
@@ -194,3 +197,73 @@ def test_csv_has_primary_pokemons_column(dataset, tmp_path):
     assert "primary_pokemons" in rows[0]
     dual_row = next(r for r in rows if "Bulbasaur & Ivysaur-GX" in r)
     assert "Bulbasaur,Ivysaur" in dual_row
+
+
+def test_json_includes_release_date(dataset, tmp_path):
+    path = tmp_path / "out.json"
+    REGISTRY["json"]().write(full(dataset), path)
+    obj = json.loads(path.read_text(encoding="utf-8"))
+    # Aquapolis is in our fixture set_release_dates.json → 2003-01-15
+    aqua = obj["cards"]["Aquapolis|Town Volunteers|136"]
+    assert aqua["release_date"] == "2003-01-15"
+    # "Made Up Set" is not in the fixture → null
+    made_up = obj["cards"]["Made Up Set|Some Card|1"]
+    assert made_up["release_date"] is None
+
+
+def test_md_sorts_cards_chronologically_within_bucket(dataset, tmp_path):
+    # Build a hand-rolled dataset with three cards in known dates so the
+    # ordering is unambiguous. Use "Eevee" as both cameo subject AND card
+    # name so card_primary_pokemons resolves to ["Eevee"] — the cards bucket
+    # under ## Eevee.
+    from cameo_convert.model import CameoEntry
+
+    entries = [
+        CameoEntry(
+            cameo_subject="Eevee",
+            parent_species=None,
+            subject_kind="pokemon",
+            ndex=133,
+            region=None,
+            card_name="Eevee",
+            set_name=set_name,
+            collector_number="1",
+            notes=None,
+            flags=frozenset(),
+            artwork_group_id=None,
+        )
+        for set_name in ("OLD SET", "MID SET", "NEW SET")
+    ]
+    dates = {
+        "OLD SET": "2000-01-01",
+        "MID SET": "2010-01-01",
+        "NEW SET": "2020-01-01",
+    }
+    resolver = lambda s: dates.get(s)  # noqa: E731
+    ds = invert(entries, source_file="x", set_date_resolver=resolver)
+    path = tmp_path / "out.md"
+    REGISTRY["md"]().write(full(ds), path)
+    text = path.read_text(encoding="utf-8")
+    # All three Eevee cards appear under ## Eevee — verify chronological order.
+    eevee = text.split("## Eevee\n", 1)[1].split("\n## ")[0]
+    old_pos = eevee.find("OLD SET")
+    mid_pos = eevee.find("MID SET")
+    new_pos = eevee.find("NEW SET")
+    assert 0 <= old_pos < mid_pos < new_pos, (
+        f"expected chronological order OLD < MID < NEW, got {old_pos}/{mid_pos}/{new_pos}"
+    )
+
+
+def test_sqlite_release_date_column(dataset, tmp_path):
+    path = tmp_path / "out.sqlite"
+    REGISTRY["sqlite"]().write(full(dataset), path)
+    con = sqlite3.connect(path)
+    try:
+        rows = con.execute(
+            "SELECT release_date FROM cards WHERE set_name = 'Aquapolis'"
+        ).fetchall()
+        assert rows
+        for (rd,) in rows:
+            assert rd == "2003-01-15"
+    finally:
+        con.close()
