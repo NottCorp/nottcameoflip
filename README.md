@@ -2,7 +2,7 @@
 
 Invert RotomAmiti's Cameo Pokémon Card Database from a Pokémon-indexed lookup
 ("which cards feature Pikachu as a cameo?") into a card-indexed lookup
-("which Pokémon cameo on this card?").
+("which Pokémon cameo is on this card?").
 
 > **Credit & source of truth.** The underlying database is
 > [RotomAmiti's Cameo Pokémon Card Database](https://docs.google.com/spreadsheets/d/18nIkOgqQrHZTz0TrH_gL1e1nL1RcHiCmPF5finAjToY/edit?gid=1923267969#gid=1923267969).
